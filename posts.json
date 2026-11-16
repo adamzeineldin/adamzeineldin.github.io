@@ -1,7 +1,7 @@
 [
   {
     "date": "2026-11-15",
-    "text": "built a full self-driving wheelchair.\n\nhit summon on the ipad and it drives itself over to you, or just say \"take me to the blue sofa\" and it takes you there. an arduino pretends to be the joystick so we didn't cut a single wire, and our post-trained omnivla model drives it off a phone camera.",
+    "text": "built a full self-driving wheelchair.\n\nhit summon on the ipad and it drives itself over to you, or just say \"take me to the blue sofa\" and it takes you there. an arduino pretends to be the joystick so we didn't cut a single wire, and our post-trained omnivla model drives it off a phone camera.\n\nbuilt with urjit chakraborty, yaseen moustafa, and ibraheem shaikh.",
     "image": "posts/fsd-wheelchair.gif",
     "alt": "An empty electric wheelchair driving itself across a room toward a person on a couch, with the model's camera view and the iPad app shown in the corners.",
     "link": "https://github.com/ibraheemshaikh5/fsd-wheelchair"
