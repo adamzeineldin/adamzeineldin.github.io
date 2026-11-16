@@ -19,5 +19,12 @@
     "image": "posts/helix.jpg",
     "alt": "Adam with teammates and Bloomberg judges after winning Most Philanthropic Hack for Helix.",
     "link": "https://devpost.com/software/helix-yp73wi"
+  },
+  {
+    "date": "2026-05-04",
+    "text": "immortal won best healthcare hack at anthropic.\n\nwearables collect tons of health data but don't help you do anything with it. you can see your hrv drop, but not why or what to change. immortal learns your personal baselines, catches meaningful changes, and turns them into evidence-backed recommendations with real citations.\n\nthe best part is self-experiments: try something like cutting caffeine after 2pm and it tracks the before and after and tells you if it actually worked.\n\nbuilt with shanmukha pothukuchi, reyan yousif, and bassil shalaby.",
+    "image": "posts/immortal.jpg",
+    "alt": "Adam with Shanmukha, Reyan and Bassil holding the Best Healthcare Hack award for Immortal.",
+    "link": "https://devpost.com/software/immortal-nzbtml"
   }
 ]
