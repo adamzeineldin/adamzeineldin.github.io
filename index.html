@@ -3,393 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Adam Zeineldin | Portfolio</title>
-  <meta name="description" content="Adam Zeineldin — CS Student at the University of Maryland. Full-stack developer building web apps." />
+  <title>Adam Zeineldin</title>
+  <meta name="description" content="Adam Zeineldin — CS student at UMD and founder of Nimbotics, building at the edge of AI and robotics." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="stylesheet" href="style.css?v=7" />
 </head>
 <body>
+  <button class="theme-dot" id="themeToggle" aria-label="Toggle dark mode"></button>
 
-  <!-- ── Navigation ───────────────────────────────────────────────── -->
-  <nav id="navbar">
-    <div class="nav-container">
-      <a href="#home" class="nav-logo">Adam<span>Zeineldin</span></a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#home" class="nav-link active">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#experience" class="nav-link">Experience</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+  <main class="page">
+    <header class="header">
+      <img src="avatar.jpg" alt="Adam Zeineldin" class="avatar" />
+      <h1>Adam Zeineldin</h1>
+    </header>
 
-  <!-- ── Hero ─────────────────────────────────────────────────────── -->
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <p class="hero-greeting">Hi there, I'm</p>
-      <h1 class="hero-name">Adam Zeineldin</h1>
-      <h2 class="hero-title">
-        <span class="typed-text" id="typedText"></span><span class="cursor">|</span>
-      </h2>
-      <p class="hero-desc">
-        CS student at the University of Maryland passionate about building
-        full-stack web applications and solving real-world problems through code.
+    <div class="row">
+      <div class="row-label">About</div>
+    <section class="intro">
+      <p>What's up? I'm Adam</p>
+
+      <p>
+        I'm a CS student at <a href="https://umd.edu" target="_blank" rel="noopener">UMD</a>. I'm working part-time at
+        <a href="https://www.waters.com" target="_blank" rel="noopener">Waters Corporation</a> on the
+        infrastructure behind their FDA-approved machines and figuring out how it all gets connected.
       </p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn btn-primary">View My Work</a>
-        <a href="#contact" class="btn btn-outline">Get In Touch</a>
-      </div>
-      <div class="hero-socials">
-        <a href="https://github.com/adamzeineldin" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        </a>
-        <a href="https://linkedin.com/in/adamzeineldin" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-        <a href="mailto:azeineld1@gmail.com" aria-label="Email">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-.226.047-.443.129-.637L12 13.091 23.871 4.82c.082.194.129.41.129.637zM12 10.909L.582 3.273h22.836L12 10.909z"/></svg>
-        </a>
-      </div>
+
+      <p>
+        I'm also in the startup world, working at the frontier of AI and robotics alongside robotics labs.
+        I love building, and I'm super excited about how fast AI is pushing this field forward.
+      </p>
+
+      <p>
+        If you want to talk, feel free to <a href="mailto:azeineld1@gmail.com">send me a message</a>.
+        Outside of that, you'll probably find me playing tennis or at the gym.
+      </p>
+
+      <p>- Adam</p>
+    </section>
     </div>
-    <div class="hero-image">
-      <div class="image-wrapper">
-        <div class="profile-inner">
-          <img src="profile.jpg" alt="Adam Zeineldin" class="profile-photo" />
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ── About ─────────────────────────────────────────────────────── -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-title">About <span>Me</span></h2>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            I'm a Computer Science student at the <strong>University of Maryland, College Park</strong>
-            (GPA: 3.82/4.0), proud member of the <strong>Gemstone Honors College</strong> and Research
-            Honors Program.
-          </p>
-          <p>
-            I love building things — from AI-powered pipelines to full-stack web apps. I've interned
-            twice at the <strong>Johns Hopkins Applied Physics Laboratory</strong>, working on autonomous
-            vehicle software and responsible AI policy evaluation.
-          </p>
-          <p>
-            Whether it's training a Q-learning agent from scratch or shipping a real product used by
-            fellow Terps, I'm always looking for the next problem worth solving.
-          </p>
-          <a href="#contact" class="btn btn-primary" style="margin-top:1.5rem;display:inline-block;">Let's Connect</a>
-        </div>
-        <div class="about-cards">
-          <div class="info-card">
-            <div class="info-icon">🎓</div>
-            <div>
-              <h4>Education</h4>
-              <p>B.S. Computer Science</p>
-              <p class="muted">UMD · GPA 3.82 · May 2028</p>
-            </div>
+    <div class="row">
+      <div class="row-label">Experience</div>
+    <section>
+      <ul class="entries">
+        <li class="entry">
+          <img src="logos/nimbotics.png" alt="Nimbotics logo" class="logo" />
+          <div>
+            <p class="entry-title"><a href="https://nimbotics.net" target="_blank" rel="noopener">Nimbotics</a> <span class="role">Founder</span></p>
+            <p class="entry-desc">shared robotics experiences</p>
           </div>
-          <div class="info-card">
-            <div class="info-icon">📍</div>
-            <div>
-              <h4>Location</h4>
-              <p>College Park, MD</p>
-            </div>
+        </li>
+        <li class="entry">
+          <img src="logos/mitre.png" alt="MITRE logo" class="logo" />
+          <div>
+            <p class="entry-title"><a href="https://www.mitre.org" target="_blank" rel="noopener">MITRE</a> <span class="role">Software Engineer</span></p>
+            <p class="entry-desc">mitre x adc</p>
           </div>
-          <div class="info-card">
-            <div class="info-icon">💻</div>
-            <div>
-              <h4>Focus</h4>
-              <p>AI & Full-Stack Development</p>
-            </div>
+        </li>
+        <li class="entry">
+          <img src="logos/umd.png" alt="University of Maryland logo" class="logo" />
+          <div>
+            <p class="entry-title"><a href="https://www.cs.umd.edu" target="_blank" rel="noopener">University of Maryland</a> <span class="role">TA - Software Development with GenAI</span></p>
+            <p class="entry-desc">ai power project grading automation x development</p>
           </div>
-          <div class="info-card">
-            <div class="info-icon">📧</div>
-            <div>
-              <h4>Email</h4>
-              <p><a href="mailto:azeineld1@gmail.com">azeineld1@gmail.com</a></p>
-            </div>
+        </li>
+        <li class="entry">
+          <img src="logos/waters.png" alt="Waters logo" class="logo" />
+          <div>
+            <p class="entry-title"><a href="https://www.waters.com" target="_blank" rel="noopener">Waters Corporation</a> <span class="role">Engineering</span></p>
+            <p class="entry-desc">r&amp;d x infrastructure for fda-approved machines</p>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Experience ────────────────────────────────────────────────── -->
-  <section id="experience" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Work <span>Experience</span></h2>
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <h3>Artificial Intelligence Intern</h3>
-              <span class="timeline-company">Johns Hopkins Applied Physics Laboratory</span>
-            </div>
-            <span class="timeline-date">Jun 2024 – Aug 2024 · Laurel, MD</span>
-            <ul class="timeline-desc">
-              <li>Analyzed the U.S. Government's AI Bill of Rights Blueprint and presented key risks and strengths, helping APL teams evaluate policy impact.</li>
-              <li>Worked with APL teams to evaluate how the blueprint could shape responsible AI development and deployment.</li>
-              <li>Created and presented findings to a large audience of APL faculty and staff.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span class="tag">AI Policy</span>
-              <span class="tag">Research</span>
-              <span class="tag">Presentation</span>
-            </div>
+        </li>
+        <li class="entry">
+          <img src="logos/apl.png" alt="Johns Hopkins APL logo" class="logo" />
+          <div>
+            <p class="entry-title"><a href="https://www.jhuapl.edu" target="_blank" rel="noopener">Johns Hopkins APL</a> <span class="role">Engineering</span></p>
+            <p class="entry-desc">vehicle automation + ml classifications</p>
           </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-card">
-            <div class="timeline-header">
-              <h3>Software Engineering Intern</h3>
-              <span class="timeline-company">Johns Hopkins Applied Physics Laboratory</span>
-            </div>
-            <span class="timeline-date">Jun 2023 – Aug 2023 · Laurel, MD</span>
-            <ul class="timeline-desc">
-              <li>Contributed to the design and reprogramming of autonomous vehicle control software to support safer navigation.</li>
-              <li>Built an interactive website using HTML, CSS, and JavaScript to monitor tree density in Howard County and communicate environmental significance.</li>
-              <li>Demonstrated the tree tracking website at the yearly ASPIRE Student Showcase.</li>
-            </ul>
-            <div class="timeline-tags">
-              <span class="tag">JavaScript</span>
-              <span class="tag">HTML/CSS</span>
-              <span class="tag">Autonomous Vehicles</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Projects ──────────────────────────────────────────────────── -->
-  <section id="projects" class="section">
-    <div class="container">
-      <h2 class="section-title">My <span>Projects</span></h2>
-      <p class="section-sub">A selection of things I've built</p>
-      <div class="projects-grid">
-
-        <!-- BigBrother -->
-        <div class="project-card" data-modal="modal-bigbrother">
-          <div class="project-accent" style="background: linear-gradient(135deg,#3b82f6,#6366f1);"></div>
-          <div class="project-body">
-            <h3>BigBrother</h3>
-            <p>AI-powered memory assistant that detects motion, records video/audio, and uses Google Gemini to summarize and search your daily events — fully local, no cloud.</p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">React</span>
-              <span class="tag">Flask</span>
-              <span class="tag">OpenCV</span>
-              <span class="tag">YOLOv8</span>
-            </div>
-          </div>
-          <div class="project-footer">
-            <button class="btn-link" data-modal="modal-bigbrother">View Details →</button>
-            <a href="https://github.com/adamzeineldin" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- TerpGigs -->
-        <div class="project-card" data-modal="modal-terpgigs">
-          <div class="project-accent" style="background: linear-gradient(135deg,#dc2626,#991b1b);"></div>
-          <div class="project-body">
-            <h3>TerpGigs</h3>
-            <p>A student-to-student gig marketplace for UMD students to post service requests, browse providers, and connect — built with Next.js and Firebase.</p>
-            <div class="project-tags">
-              <span class="tag">Next.js</span>
-              <span class="tag">TypeScript</span>
-              <span class="tag">Firebase</span>
-              <span class="tag">Tailwind CSS</span>
-            </div>
-          </div>
-          <div class="project-footer">
-            <button class="btn-link" data-modal="modal-terpgigs">View Details →</button>
-            <a href="https://github.com/adamzeineldin/terpgigs" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- RL Tic Tac Toe -->
-        <div class="project-card" data-modal="modal-rlttt">
-          <div class="project-accent" style="background: linear-gradient(135deg,#10b981,#0d9488);"></div>
-          <div class="project-body">
-            <h3>RL Tic Tac Toe AI</h3>
-            <p>A Q-learning agent that mastered Tic Tac Toe through 100,000 self-play iterations, reaching consistent optimal play against rule-based and perfect-play opponents.</p>
-            <div class="project-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Q-Learning</span>
-              <span class="tag">Reinforcement Learning</span>
-            </div>
-          </div>
-          <div class="project-footer">
-            <button class="btn-link" data-modal="modal-rlttt">View Details →</button>
-            <a href="https://github.com/adamzeineldin" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Contact ────────────────────────────────────────────────────── -->
-  <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title">Get In <span>Touch</span></h2>
-      <p class="section-sub">Have a project idea or just want to say hi? My inbox is always open.</p>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="contact-icon">📧</div>
-            <div>
-              <h4>Email</h4>
-              <a href="mailto:azeineld1@gmail.com">azeineld1@gmail.com</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">💼</div>
-            <div>
-              <h4>LinkedIn</h4>
-              <a href="https://linkedin.com/in/adamzeineldin" target="_blank" rel="noopener">linkedin.com/in/adamzeineldin</a>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🐙</div>
-            <div>
-              <h4>GitHub</h4>
-              <a href="https://github.com/adamzeineldin" target="_blank" rel="noopener">github.com/adamzeineldin</a>
-            </div>
-          </div>
-        </div>
-        <form class="contact-form" id="contactForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required />
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" placeholder="What's on your mind?" required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
-          <p class="form-note">Note: Connect a form service like <a href="https://formspree.io" target="_blank">Formspree</a> to make this functional.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ── Scroll-to-top ──────────────────────────────────────────────── -->
-  <button id="scrollTop" class="scroll-top" aria-label="Scroll to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/>
-    </svg>
-  </button>
-
-  <!-- ── Modals ─────────────────────────────────────────────────────── -->
-  <div class="modal-overlay" id="modal-bigbrother">
-    <div class="modal">
-      <button class="modal-close" aria-label="Close">✕</button>
-      <div class="modal-accent" style="background:linear-gradient(135deg,#3b82f6,#6366f1);"></div>
-      <h2>BigBrother</h2>
-      <p class="modal-date">Nov 2025 – Present</p>
-      <p>An AI-powered memory assistant web app that detects motion, records synchronized video and audio, and uses Google Gemini to summarize and search your daily events — all running locally with no cloud reliance.</p>
-      <h4>Key Features</h4>
-      <ul>
-        <li>Real-time motion detection and recording pipeline using OpenCV and YOLOv8 to log accurate event clips</li>
-        <li>Google Gemini 2.5 Flash integration for video summaries, speech-to-text, image captions, and natural language search</li>
-        <li>Python + Flask back-end with a React front-end for a clean, responsive UI</li>
-        <li>Fully local SQLite database and memory-node system — no cloud, complete privacy</li>
+        </li>
       </ul>
-      <div class="modal-tags">
-        <span class="tag">Python</span>
-        <span class="tag">React</span>
-        <span class="tag">Flask</span>
-        <span class="tag">OpenCV</span>
-        <span class="tag">YOLOv8</span>
-        <span class="tag">Google Gemini AI</span>
-        <span class="tag">SQLite</span>
-      </div>
-      <div class="modal-links">
-        <a href="https://github.com/adamzeineldin" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
-      </div>
+    </section>
     </div>
-  </div>
 
-  <div class="modal-overlay" id="modal-terpgigs">
-    <div class="modal">
-      <button class="modal-close" aria-label="Close">✕</button>
-      <div class="modal-accent" style="background:linear-gradient(135deg,#dc2626,#991b1b);"></div>
-      <h2>TerpGigs</h2>
-      <p class="modal-date">Sep 2025 – Present</p>
-      <p>A student-to-student marketplace built for University of Maryland students. Terps can post service requests, search providers, browse listings, and connect through real-time chat.</p>
-      <h4>Key Features</h4>
-      <ul>
-        <li>Built with Next.js + React and a full TypeScript codebase with TailwindCSS UI</li>
-        <li>Dedicated front-end flows for posting, searching, and responding to reduce friction</li>
-        <li>Scalable Firebase data model for user profiles, listings, and interactions</li>
-        <li>Real-time chat between request posters and acceptors via Firebase Firestore</li>
-      </ul>
-      <div class="modal-tags">
-        <span class="tag">Next.js</span>
-        <span class="tag">TypeScript</span>
-        <span class="tag">Firebase</span>
-        <span class="tag">Tailwind CSS</span>
-        <span class="tag">React</span>
-      </div>
-      <div class="modal-links">
-        <a href="https://github.com/adamzeineldin/terpgigs" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
-      </div>
+
+    <div class="row">
+      <div class="row-label">Elsewhere</div>
+    <footer class="links">
+      <a href="https://github.com/adamzeineldin" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub" class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></a>
+      <a href="https://linkedin.com/in/adamzeineldin" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn" class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="https://x.com/adamzeineldin" target="_blank" rel="noopener" aria-label="X" title="X" class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="mailto:azeineld1@gmail.com" aria-label="Email" title="Email" class="icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M2 5.5A1.5 1.5 0 013.5 4h17A1.5 1.5 0 0122 5.5v13a1.5 1.5 0 01-1.5 1.5h-17A1.5 1.5 0 012 18.5v-13zm2.3.5L12 11.9 19.7 6H4.3zM20 7.6l-7.4 5.7a1 1 0 01-1.2 0L4 7.6V18h16V7.6z"/></svg></a>
+    </footer>
     </div>
-  </div>
+  </main>
 
-  <div class="modal-overlay" id="modal-rlttt">
-    <div class="modal">
-      <button class="modal-close" aria-label="Close">✕</button>
-      <div class="modal-accent" style="background:linear-gradient(135deg,#10b981,#0d9488);"></div>
-      <h2>Reinforcement Learning Tic Tac Toe AI</h2>
-      <p class="modal-date">Jun 2025 – Aug 2025</p>
-      <p>A Q-learning agent that learned optimal Tic Tac Toe strategies entirely through self-play, with no hard-coded rules — reaching consistent optimal play after 100,000 training iterations.</p>
-      <h4>Key Features</h4>
-      <ul>
-        <li>Implemented a Q-learning agent with Q-values and reward systems to guide both players toward optimal strategies</li>
-        <li>Tuned hyperparameters (learning rate, discount factor, epsilon) to balance exploration and exploitation</li>
-        <li>Trained across 100,000 self-play iterations with no human-authored game logic</li>
-        <li>Reached consistent optimal play against both rule-based and perfect-play opponents</li>
-      </ul>
-      <div class="modal-tags">
-        <span class="tag">Python</span>
-        <span class="tag">Q-Learning</span>
-        <span class="tag">Reinforcement Learning</span>
-        <span class="tag">AI</span>
-      </div>
-      <div class="modal-links">
-        <a href="https://github.com/adamzeineldin" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
-      </div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <script src="script.js?v=7"></script>
+  <script src="field.js?v=7"></script>
 </body>
 </html>
