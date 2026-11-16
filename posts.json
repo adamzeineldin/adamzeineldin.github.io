@@ -1,0 +1,23 @@
+[
+  {
+    "date": "2026-11-15",
+    "text": "built a full self-driving wheelchair.\n\nhit summon on the ipad and it drives itself over to you, or just say \"take me to the blue sofa\" and it takes you there. an arduino pretends to be the joystick so we didn't cut a single wire, and our post-trained omnivla model drives it off a phone camera.",
+    "image": "posts/fsd-wheelchair.gif",
+    "alt": "An empty electric wheelchair driving itself across a room toward a person on a couch, with the model's camera view and the iPad app shown in the corners.",
+    "link": "https://github.com/ibraheemshaikh5/fsd-wheelchair"
+  },
+  {
+    "date": "2026-11-04",
+    "text": "nimbotics.net is up.\n\none robot learns a skill in simulation, saves what worked, and every other robot can pick it up, even ones built completely differently.",
+    "image": "posts/nimbotics.jpg",
+    "alt": "Nimbotics: One robot learns it. Every robot remembers. A robot arm drawn in points of light.",
+    "link": "https://nimbotics.net"
+  },
+  {
+    "date": "2026-04-17",
+    "text": "helix won bloomberg's most philanthropic hack.\n\npick a cancer type and a protein target and it pulls 14,000 real compounds from chembl, scores them with ml models trained on actual lab experiments, and surfaces the top 10 in seconds. then each candidate gets checked with vqe, a real quantum algorithm, for molecular stability.\n\neverything in it comes from real data. drug discovery doesn't have room for fake precision.\n\nbuilt with bassil shalaby and reyan yousif.",
+    "image": "posts/helix.jpg",
+    "alt": "Adam with teammates and Bloomberg judges after winning Most Philanthropic Hack for Helix.",
+    "link": "https://devpost.com/software/helix-yp73wi"
+  }
+]
