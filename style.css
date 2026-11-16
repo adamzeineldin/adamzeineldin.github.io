@@ -54,6 +54,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* ── Header ─────────────────────────────── */
 .header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 14px;
   padding-bottom: 28px;
@@ -123,11 +124,13 @@ h1 {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Elsewhere (icon links) ─────────────── */
+/* ── Social icons (next to name) ────────── */
 .links {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 16px;
+  margin-left: 14px;
+  padding-top: 6px;
 }
 
 .links .icon {
@@ -163,6 +166,7 @@ h1 {
   .header { padding-right: 24px; }
   .avatar { width: 40px; height: 40px; }
   h1 { font-size: 36px; }
+  .links { flex-basis: 100%; margin-left: 0; padding-top: 0; }
   .row { grid-template-columns: 1fr; gap: 10px; padding: 24px 0; }
   .theme-dot { top: 20px; right: 16px; }
 }
