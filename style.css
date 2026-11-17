@@ -279,3 +279,7 @@ h1 {
   .links { flex-basis: 100%; margin-left: 0; padding-top: 0; }
   .row { grid-template-columns: 1fr; gap: 9px; padding: 21.5px 0; }
 }
+
+/* Name letters nudged by the dot-field click ripple (field.js) */
+.name-word { white-space: nowrap; }
+.name-letter { display: inline-block; will-change: transform; }
