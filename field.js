@@ -1,13 +1,16 @@
-/* Interactive dot field: dots drift away from the cursor and ripple on click. */
+/* Interactive dot field: dots drift away from the cursor and ripple on click.
+   On touch devices (no mouse) the dots are drawn but stay still. */
 (() => {
   const SPACING = 13;
   const RADIUS = 160;
   const PUSH = 36;
+  const DOT_SIZE = 0.8;
   const canvas = document.createElement('canvas');
   canvas.id = 'field';
   document.body.prepend(canvas);
   const ctx = canvas.getContext('2d');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasMouse = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   let dots = [];
   let mouse = { x: -9999, y: -9999 };
   let ripples = [];
@@ -16,8 +19,8 @@
   function colors() {
     const dark = document.documentElement.dataset.theme === 'dark';
     return dark
-      ? ['rgba(230,120,120,0.28)', 'rgba(130,150,240,0.28)']
-      : ['rgba(205,80,80,0.42)', 'rgba(80,100,205,0.38)'];
+      ? ['rgba(230,120,120,0.22)', 'rgba(130,150,240,0.22)']
+      : ['rgba(205,80,80,0.32)', 'rgba(80,100,205,0.28)'];
   }
 
   function build() {
@@ -43,14 +46,14 @@
     ripples = ripples.filter(r => now - r.t < 1400);
     let moving = ripples.length > 0;
     for (const d of dots) {
-      let tx = d.hx, ty = d.hy, size = 1.1;
+      let tx = d.hx, ty = d.hy, size = DOT_SIZE;
       const dx = d.hx - mouse.x, dy = d.hy - mouse.y;
       const dist = Math.hypot(dx, dy);
       if (dist < RADIUS) {
         const f = (1 - dist / RADIUS) ** 2;
         tx += (dx / (dist || 1)) * PUSH * f;
         ty += (dy / (dist || 1)) * PUSH * f;
-        size += f * 3;
+        size += f * 2.4;
       }
       for (const r of ripples) {
         const rr = ((now - r.t) / 1400) * 600;
@@ -75,9 +78,11 @@
   function kick() { if (!raf && !reduceMotion) raf = requestAnimationFrame(draw); }
 
   addEventListener('resize', build);
-  addEventListener('pointermove', e => { mouse = { x: e.clientX, y: e.clientY }; kick(); });
-  addEventListener('pointerleave', () => { mouse = { x: -9999, y: -9999 }; kick(); });
-  addEventListener('pointerdown', e => { ripples.push({ x: e.clientX, y: e.clientY, t: performance.now() }); kick(); });
+  if (hasMouse) {
+    addEventListener('pointermove', e => { mouse = { x: e.clientX, y: e.clientY }; kick(); });
+    addEventListener('pointerleave', () => { mouse = { x: -9999, y: -9999 }; kick(); });
+    addEventListener('pointerdown', e => { ripples.push({ x: e.clientX, y: e.clientY, t: performance.now() }); kick(); });
+  }
   document.getElementById('themeToggle').addEventListener('click', () => setTimeout(draw, 0));
   build();
 })();

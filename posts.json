@@ -1,10 +1,25 @@
 [
   {
     "date": "2026-11-15",
-    "text": "built a full self-driving wheelchair.\n\nhit summon on the ipad and it drives itself over to you, or just say \"take me to the blue sofa\" and it takes you there. an arduino pretends to be the joystick so we didn't cut a single wire, and our post-trained omnivla model drives it off a phone camera.\n\nbuilt with urjit chakraborty, yaseen moustafa, and ibraheem shaikh.",
+    "text": "built a full self-driving wheelchair.\n\nhit summon on the ipad and it drives itself over to you, or just say \"take me to the blue sofa\" and it takes you there. an arduino pretends to be the joystick, and our post-trained omnivla model drives it off a phone camera.",
     "image": "posts/fsd-wheelchair.gif",
     "alt": "An empty electric wheelchair driving itself across a room toward a person on a couch, with the model's camera view and the iPad app shown in the corners.",
-    "link": "https://github.com/ibraheemshaikh5/fsd-wheelchair"
+    "link": "https://github.com/ibraheemshaikh5/fsd-wheelchair",
+    "builtWith": [
+      {
+        "name": "Urjit Chakraborty",
+        "linkedin": "https://www.linkedin.com/in/urjitc/"
+      },
+      {
+        "name": "Yaseen Moustafa",
+        "linkedin": "https://www.linkedin.com/in/yaseen-moustafa-120967279/"
+      },
+      {
+        "name": "Ibraheem Shaikh",
+        "linkedin": "https://www.linkedin.com/in/ibraheemshaikh/"
+      }
+    ],
+    "url": "https://ishaikh.com/blog/fsd-wheelchair"
   },
   {
     "date": "2026-11-04",
@@ -15,16 +30,40 @@
   },
   {
     "date": "2026-04-17",
-    "text": "helix won bloomberg's most philanthropic hack.\n\npick a cancer type and a protein target and it pulls 14,000 real compounds from chembl, scores them with ml models trained on actual lab experiments, and surfaces the top 10 in seconds. then each candidate gets checked with vqe, a real quantum algorithm, for molecular stability.\n\neverything in it comes from real data. drug discovery doesn't have room for fake precision.\n\nbuilt with bassil shalaby and reyan yousif.",
+    "text": "helix won bloomberg's most philanthropic hack.\n\npick a cancer type and a protein target and it pulls 14,000 real compounds from chembl, scores them with ml models trained on actual lab experiments, and surfaces the top 10 in seconds. then each candidate gets checked with vqe, a real quantum algorithm, for molecular stability.\n\neverything in it comes from real data. drug discovery doesn't have room for fake precision.",
     "image": "posts/helix.jpg",
     "alt": "Adam with teammates and Bloomberg judges after winning Most Philanthropic Hack for Helix.",
-    "link": "https://devpost.com/software/helix-yp73wi"
+    "link": "https://devpost.com/software/helix-yp73wi",
+    "builtWith": [
+      {
+        "name": "Bassil Shalaby",
+        "linkedin": "https://www.linkedin.com/in/beshalaby/"
+      },
+      {
+        "name": "Reyan Yousif",
+        "linkedin": "https://www.linkedin.com/in/reyanyousif/"
+      }
+    ]
   },
   {
     "date": "2026-05-04",
-    "text": "immortal won best healthcare hack at anthropic.\n\nwearables collect tons of health data but don't help you do anything with it. you can see your hrv drop, but not why or what to change. immortal learns your personal baselines, catches meaningful changes, and turns them into evidence-backed recommendations with real citations.\n\nthe best part is self-experiments: try something like cutting caffeine after 2pm and it tracks the before and after and tells you if it actually worked.\n\nbuilt with shanmukha pothukuchi, reyan yousif, and bassil shalaby.",
+    "text": "immortal won best healthcare hack at anthropic.\n\nwearables collect tons of health data but don't help you do anything with it. you can see your hrv drop, but not why or what to change. immortal learns your personal baselines, catches meaningful changes, and turns them into evidence-backed recommendations with real citations.\n\nthe best part is self-experiments: try something like cutting caffeine after 2pm and it tracks the before and after and tells you if it actually worked.",
     "image": "posts/immortal.jpg",
     "alt": "Adam with Shanmukha, Reyan and Bassil holding the Best Healthcare Hack award for Immortal.",
-    "link": "https://devpost.com/software/immortal-nzbtml"
+    "link": "https://devpost.com/software/immortal-nzbtml",
+    "builtWith": [
+      {
+        "name": "Shanmukha Pothukuchi",
+        "linkedin": "https://www.linkedin.com/in/shanmukhapothukuchi/"
+      },
+      {
+        "name": "Reyan Yousif",
+        "linkedin": "https://www.linkedin.com/in/reyanyousif/"
+      },
+      {
+        "name": "Bassil Shalaby",
+        "linkedin": "https://www.linkedin.com/in/beshalaby/"
+      }
+    ]
   }
 ]
