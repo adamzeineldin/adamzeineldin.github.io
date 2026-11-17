@@ -92,7 +92,6 @@
     const time = el('time', 'post-date', formatDate(post.date));
     time.dateTime = post.date;
     head.append(avatar, el('span', 'post-author', AUTHOR), el('span', 'post-sep', '·'), time);
-    if (post.url) head.append(el('span', 'post-badge', 'Blog'));
     article.append(head);
 
     article.append(el('p', 'post-text', post.text));

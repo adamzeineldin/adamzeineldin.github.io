@@ -16,12 +16,7 @@
   let ripples = [];
   let raf = null;
 
-  function colors() {
-    const dark = document.documentElement.dataset.theme === 'dark';
-    return dark
-      ? ['rgba(230,120,120,0.22)', 'rgba(130,150,240,0.22)']
-      : ['rgba(205,80,80,0.32)', 'rgba(80,100,205,0.28)'];
-  }
+  const PALETTE = ['rgba(205,80,80,0.32)', 'rgba(80,100,205,0.28)'];
 
   function build() {
     const dpr = window.devicePixelRatio || 1;
@@ -40,7 +35,6 @@
   }
 
   function draw() {
-    const palette = colors();
     ctx.clearRect(0, 0, innerWidth, innerHeight);
     const now = performance.now();
     ripples = ripples.filter(r => now - r.t < 1400);
@@ -69,7 +63,7 @@
       d.x += (tx - d.x) * 0.18;
       d.y += (ty - d.y) * 0.18;
       if (Math.abs(tx - d.x) > 0.05 || Math.abs(ty - d.y) > 0.05) moving = true;
-      ctx.fillStyle = palette[d.c];
+      ctx.fillStyle = PALETTE[d.c];
       ctx.fillRect(d.x - size / 2, d.y - size / 2, size, size);
     }
     raf = moving ? requestAnimationFrame(draw) : null;
@@ -83,6 +77,5 @@
     addEventListener('pointerleave', () => { mouse = { x: -9999, y: -9999 }; kick(); });
     addEventListener('pointerdown', e => { ripples.push({ x: e.clientX, y: e.clientY, t: performance.now() }); kick(); });
   }
-  document.getElementById('themeToggle').addEventListener('click', () => setTimeout(draw, 0));
   build();
 })();
