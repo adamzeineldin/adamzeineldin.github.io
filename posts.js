@@ -2,20 +2,18 @@
  * Recent Activity feed.
  * Posts live in posts.json (newest are shown first). Each post:
  *   date  (required) "YYYY-MM-DD"
- *   text  (required) post text; use \n for line breaks
+ *   text  (required) post text; the first paragraph is the title, use \n\n between paragraphs
  *   image (optional) path to an image, e.g. "posts/my-photo.jpg"
  *   alt   (optional) short description of the image
  *   link  (optional) URL shown under the post
  *   builtWith (optional) [{ "name": "Full Name", "linkedin": "https://www.linkedin.com/in/..." }]
- *   url   (optional) full blog post (https://... opens in a new tab, or a local path); makes the whole card clickable
+ *   url   (optional) full blog post (https://... opens in a new tab, or a local path)
  */
 (() => {
   const feed = document.getElementById('feed');
   if (!feed) return;
 
-  const AUTHOR = 'Adam Zeineldin';
-  const AVATAR = 'avatar.jpg';
-  const PAGE_SIZE = 3; // posts shown before (and per) "See more"
+  const PAGE_SIZE = 5; // posts shown before (and per) "See more"
 
   /** @param {unknown} post @returns {boolean} */
   function isValidPost(post) {
@@ -59,20 +57,16 @@
     return /^https?:\/\//.test(url);
   }
 
-  /** Whole card opens the blog post; inner links keep their own behavior. */
-  function makeClickable(article, url) {
-    article.classList.add('post-clickable');
-    article.addEventListener('click', (e) => {
-      if (e.target.closest('a') || window.getSelection().toString()) return;
-      if (isExternal(url)) window.open(url, '_blank', 'noopener');
-      else window.location.href = url;
-    });
+  /** @param {string} iso @returns {string} e.g. "Nov 2026" */
+  function formatDate(iso) {
+    const [y, m] = iso.split('-').map(Number);
+    return new Date(y, m - 1, 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
   }
 
-  /** @param {string} iso @returns {string} */
-  function formatDate(iso) {
-    const [y, m, d] = iso.split('-').map(Number);
-    return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  /** Splits post text into a one-line title (first paragraph) and the rest. */
+  function splitText(text) {
+    const [first, ...rest] = text.split(/\n\s*\n/);
+    return { title: first.trim().replace(/\.$/, ''), body: rest.join('\n\n').trim() };
   }
 
   function el(tag, className, text) {
@@ -82,51 +76,61 @@
     return node;
   }
 
+  /** One post: a compact row (thumbnail, date, title) that opens to show the full post. */
   function renderPost(post) {
-    const article = el('article', 'post');
+    const article = el('details', 'post');
+    const { title, body } = splitText(post.text);
 
-    const head = el('header', 'post-head');
-    const avatar = el('img', 'post-avatar');
-    avatar.src = AVATAR;
-    avatar.alt = '';
+    const row = el('summary', 'post-row');
     const time = el('time', 'post-date', formatDate(post.date));
     time.dateTime = post.date;
-    head.append(avatar, el('span', 'post-author', AUTHOR), el('span', 'post-sep', '·'), time);
-    article.append(head);
+    if (post.image) {
+      const thumb = el('img', 'post-thumb');
+      thumb.src = post.image;
+      thumb.alt = '';
+      thumb.loading = 'lazy';
+      row.append(thumb);
+    }
+    const heading = el('span', 'post-heading');
+    heading.append(time, el('span', 'post-title', title));
+    const chevron = el('span', 'post-chevron', '+');
+    chevron.setAttribute('aria-hidden', 'true');
+    row.append(heading, chevron);
+    article.append(row);
 
-    article.append(el('p', 'post-text', post.text));
-
-    if (post.builtWith && post.builtWith.length) article.append(renderBuiltWith(post.builtWith));
-
+    const content = el('div', 'post-body');
+    if (body) content.append(el('p', 'post-text', body));
+    if (post.builtWith && post.builtWith.length) content.append(renderBuiltWith(post.builtWith));
     if (post.image) {
       const img = el('img', 'post-image');
       img.src = post.image;
       img.alt = post.alt || '';
       img.loading = 'lazy';
-      article.append(img);
+      content.append(img);
     }
+    content.append(renderLinks(post));
+    article.append(content);
+    return article;
+  }
 
+  /** The project link and, when there is one, the full blog post link. */
+  function renderLinks(post) {
+    const links = el('div', 'post-links');
+    if (post.url) {
+      const external = isExternal(post.url);
+      const read = el('a', 'post-read', external ? 'Read the full post ↗' : 'Read the full post →');
+      read.href = post.url;
+      if (external) { read.target = '_blank'; read.rel = 'noopener'; }
+      links.append(read);
+    }
     if (post.link) {
       const a = el('a', 'post-link', post.link.replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, ''));
       a.href = post.link;
       a.target = '_blank';
       a.rel = 'noopener';
-      article.append(a);
+      links.append(a);
     }
-
-    if (post.url) {
-      const external = isExternal(post.url);
-      const read = el('a', 'post-read', external ? 'Read the full post ↗' : 'Read the full post →');
-      read.href = post.url;
-      if (external) {
-        read.target = '_blank';
-        read.rel = 'noopener';
-      }
-      article.append(read);
-      makeClickable(article, post.url);
-    }
-
-    return article;
+    return links;
   }
 
   function showMessage(text) {

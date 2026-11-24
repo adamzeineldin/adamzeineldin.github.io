@@ -7,6 +7,38 @@
   --muted: #7e7e87;
   --rule: color-mix(in srgb, var(--muted) 30%, transparent);
   --font: 'Space Grotesk', system-ui, sans-serif;
+  /* halftone dot colouring, read by portrait.js */
+  --dot-ink: 52, 58, 82;
+  --dot-mix: 0.42;
+  --dot-invert: 0;
+  /* pixel look shared with the portrait: dotted rules, stepped corners, dot-matrix labels */
+  --ink: rgb(var(--dot-ink));
+  --pixel-font: 'Doto', ui-monospace, monospace;
+  --dot-rule: color-mix(in srgb, var(--ink) 38%, transparent);
+  --dots-h: repeating-linear-gradient(90deg, var(--dot-rule) 0 2px, transparent 2px 6px) 2;
+  --dots-v: repeating-linear-gradient(180deg, var(--dot-rule) 0 2px, transparent 2px 6px) 2;
+  --step: 3px;
+}
+
+/* Stepped "pixel" corners instead of rounded ones */
+.logo, .post-image, .post-thumb, .post-read, .feed-more {
+  border-radius: 0;
+  clip-path: polygon(
+    0 calc(2 * var(--step)), var(--step) calc(2 * var(--step)), var(--step) var(--step), calc(2 * var(--step)) var(--step), calc(2 * var(--step)) 0,
+    calc(100% - 2 * var(--step)) 0, calc(100% - 2 * var(--step)) var(--step), calc(100% - var(--step)) var(--step), calc(100% - var(--step)) calc(2 * var(--step)), 100% calc(2 * var(--step)),
+    100% calc(100% - 2 * var(--step)), calc(100% - var(--step)) calc(100% - 2 * var(--step)), calc(100% - var(--step)) calc(100% - var(--step)), calc(100% - 2 * var(--step)) calc(100% - var(--step)), calc(100% - 2 * var(--step)) 100%,
+    calc(2 * var(--step)) 100%, calc(2 * var(--step)) calc(100% - var(--step)), var(--step) calc(100% - var(--step)), var(--step) calc(100% - 2 * var(--step)), 0 calc(100% - 2 * var(--step))
+  );
+}
+
+.post-image { --step: 4px; }
+
+/* Dot-matrix type for the small labels */
+.row-label, .post-date, .role {
+  font-family: var(--pixel-font);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 /* ── Base ───────────────────────────────── */
@@ -30,41 +62,58 @@ a {
   text-decoration: none;
 }
 
-a:hover { text-decoration: underline; text-underline-offset: 2.5px; }
+a:hover { text-decoration: underline dotted; text-decoration-thickness: 2px; text-underline-offset: 3.5px; }
 
-/* Interactive dot field canvas (drawn by field.js) */
+/* Static dot field canvas (drawn by field.js) */
 #field { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
 
 .page {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 450px);
-  gap: 65px;
-  max-width: 1404px;
-  min-height: 100vh;
+  max-width: 900px;
   margin: 0 auto;
-  padding: 32.5px 57.5px;
+  padding: 32.5px 32px 64px;
 }
 
 /* ── Header ─────────────────────────────── */
 .header {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 12.5px;
-  padding-bottom: 25px;
+  justify-content: center;
+  gap: 38px;
+  padding-bottom: 26px;
+  border-bottom: 2px solid;
+  border-image: var(--dots-h);
 }
 
-.avatar {
-  width: 48.5px;
-  height: 48.5px;
-  border-radius: 7px;
-  object-fit: cover;
+.header-text { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+
+/* Halftone portrait (drawn by portrait.js): hover reveals the photo, click develops it */
+.portrait {
+  position: relative;
+  flex: none;
+  width: 340px;
+  aspect-ratio: 225 / 243;
+  margin: -18px 0 -12px -30px;
+  cursor: crosshair;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
+
+.portrait-dots, .portrait-reveal, .portrait-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* The <img> only feeds the canvases and carries the alt text. */
+.portrait-photo { opacity: 0; object-fit: cover; pointer-events: none; }
 
 h1 {
-  font-size: 45px;
-  font-weight: 700;
-  letter-spacing: -1.5px;
+  font-family: var(--pixel-font);
+  font-size: 52px;
+  font-weight: 900;
+  letter-spacing: -2px;
   line-height: 1;
   color: var(--heading);
 }
@@ -75,8 +124,11 @@ h1 {
   grid-template-columns: 117px 1fr;
   gap: 32.5px;
   padding: 29px 0;
-  border-top: 1px solid var(--rule);
+  border-top: 2px solid;
+  border-image: var(--dots-h);
 }
+
+.content > .row:first-child { border-top: 0; }
 
 .row-label {
   color: var(--muted);
@@ -112,9 +164,7 @@ h1 {
 .logo {
   width: 50px;
   height: 50px;
-  border-radius: 10px;
   object-fit: cover;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
 /* ── Social icons (next to name) ────────── */
@@ -122,8 +172,6 @@ h1 {
   display: flex;
   align-items: center;
   gap: 14.5px;
-  margin-left: 12.5px;
-  padding-top: 5.5px;
 }
 
 .links .icon {
@@ -139,85 +187,91 @@ h1 {
 }
 
 /* ── Recent Activity feed ───────────────── */
-.activity {
-  position: sticky;
-  top: 32.5px;
-  align-self: start;
-  max-height: calc(100vh - 65px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: var(--rule) transparent;
-  border-left: 1px solid var(--rule);
-  background: var(--bg);
-}
+/* Negative margins let the row hover tint bleed past the text edge */
+.feed { margin: -14px -12px 0; }
 
-.activity h2 {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: var(--bg);
-  padding: 0 21.5px 12.5px;
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 400;
-  border-bottom: 1px solid var(--rule);
-}
-
+/* Each post is a compact row that opens in place (posts.js) */
 .post {
-  padding: 16px 21.5px 20px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 2px solid;
+  border-image: var(--dots-h);
 }
 
-.post-head {
+.post-row {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 13.5px;
+  gap: 14px;
+  padding: 14px 12px;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.15s;
 }
 
-.post-avatar { width: 27px; height: 27px; border-radius: 50%; object-fit: cover; }
+.post-row::-webkit-details-marker { display: none; }
+.post-row:hover { background: color-mix(in srgb, var(--heading) 4%, transparent); }
+.post-row:focus-visible { outline: 2px solid var(--heading); outline-offset: -2px; }
 
-.post-author { color: var(--heading); font-weight: 600; }
+.post-thumb { flex: none; width: 60px; height: 60px; object-fit: cover; }
+.post[open] .post-thumb { display: none; }
 
-.post-sep, .post-date { color: var(--muted); }
+.post-heading { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
 
-.post-text {
-  margin-top: 9px;
-  white-space: pre-line;
-  color: var(--text);
-}
+.post-date { color: var(--muted); font-size: 13.5px; }
 
-.post-image {
-  display: block;
-  width: 100%;
-  margin-top: 12.5px;
-  border-radius: 12.5px;
-  border: 1px solid var(--rule);
-}
+.post-title { color: var(--heading); font-weight: 600; line-height: 1.4; }
+.post-title::first-letter { text-transform: uppercase; }
 
-.post-link {
-  display: inline-block;
-  margin-top: 9px;
+.post-chevron {
+  margin-left: auto;
+  flex: none;
   color: var(--muted);
-  font-size: 13.5px;
-  font-weight: 500;
+  font-family: var(--pixel-font);
+  font-size: 20px;
+  font-weight: 900;
+  transition: transform 0.2s;
 }
 
-.post-link::before { content: '↗ '; }
+.post[open] .post-chevron { transform: rotate(45deg); }
 
+.post-body { padding: 0 12px 20px; }
+
+.post-text { white-space: pre-line; color: var(--text); }
+
+.post-built { margin-top: 10px; color: var(--muted); font-size: 14.5px; }
+.post-person { color: var(--heading); font-weight: 600; }
+
+.post-image { display: block; width: 100%; margin-top: 12.5px; }
+
+.post-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+  margin-top: 14px;
+}
+
+.post-read {
+  padding: 8px 14px;
+  background: var(--heading);
+  color: var(--bg);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.post-read:hover { text-decoration: none; }
+
+.post-link { color: var(--muted); font-size: 13.5px; font-weight: 500; }
+.post-link::before { content: '↗ '; }
 .post-link:hover { color: var(--heading); }
 
-.feed-message { padding: 16px 21.5px; color: var(--muted); }
+.feed-message { padding: 14px 12px; color: var(--muted); }
 
 .feed-more {
   display: block;
-  width: calc(100% - 43px);
-  margin: 18px 21.5px 24px;
-  padding: 10px 14px;
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  background: transparent;
+  width: calc(100% - 24px);
+  margin: 16px 12px 0;
+  padding: 9px 14px;
+  border: 0;
+  background: color-mix(in srgb, var(--heading) 7%, transparent);
   color: var(--heading);
   font: inherit;
   font-size: 14.5px;
@@ -226,60 +280,15 @@ h1 {
   transition: background-color 0.15s;
 }
 
-.feed-more:hover { background: color-mix(in srgb, var(--heading) 5%, transparent); }
-
+.feed-more:hover { background: color-mix(in srgb, var(--heading) 12%, transparent); }
 .feed-more:focus-visible { outline: 2px solid var(--heading); outline-offset: 2px; }
-
 .feed-more[hidden] { display: none; }
 
-.post-built {
-  margin-top: 10px;
-  color: var(--muted);
-  font-size: 14.5px;
-}
-
-.post-person { color: var(--heading); font-weight: 600; }
-
-/* Posts with a full blog page: whole card is clickable */
-.post-clickable {
-  cursor: pointer;
-  transition: background-color 0.15s;
-}
-
-.post-clickable:hover { background: color-mix(in srgb, var(--heading) 4%, transparent); }
-
-.post-read {
-  display: flex;
-  justify-content: center;
-  margin-top: 14px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: var(--heading);
-  color: var(--bg);
-  font-size: 14.5px;
-  font-weight: 600;
-  transition: transform 0.15s;
-}
-
-.post-read:hover, .post-clickable:hover .post-read { text-decoration: none; transform: translateY(-1px); }
-
 /* ── Small screens ──────────────────────── */
-@media (max-width: 1100px) {
-  .page { grid-template-columns: 1fr; gap: 0; max-width: 810px; min-height: 0; padding: 32.5px 21.5px 57.5px; }
-  .activity { position: static; max-height: none; overflow: visible; padding-top: 29px; border-left: none; border-top: 1px solid var(--rule); }
-  .activity h2 { position: static; }
-  .activity h2, .post, .feed-message { padding-left: 0; padding-right: 0; }
-  .feed-more { width: 100%; margin: 18px 0 8px; }
-}
-
 @media (max-width: 700px) {
   .page { padding: 18px 14.5px 43px; }
-  .avatar { width: 36px; height: 36px; }
-  h1 { font-size: 32.5px; }
-  .links { flex-basis: 100%; margin-left: 0; padding-top: 0; }
+  .header { justify-content: flex-start; gap: 14px; }
+  .portrait { width: 170px; margin: -9px 0 -6px -15px; }
+  h1 { font-size: 34px; letter-spacing: -1px; }
   .row { grid-template-columns: 1fr; gap: 9px; padding: 21.5px 0; }
 }
-
-/* Name letters nudged by the dot-field click ripple (field.js) */
-.name-word { white-space: nowrap; }
-.name-letter { display: inline-block; will-change: transform; }
